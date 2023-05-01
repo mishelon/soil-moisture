@@ -1,8 +1,8 @@
 let reading = 0
-let min = 0
-led.setBrightness(122)
+led.setBrightness(64)
+let ajuste = 650
 basic.forever(function () {
-    min = 660
+    basic.pause(2000)
     pins.analogWritePin(AnalogPin.P2, 1023)
     basic.pause(500)
     reading = pins.analogReadPin(AnalogPin.P0)
@@ -10,11 +10,10 @@ basic.forever(function () {
     pins.analogWritePin(AnalogPin.P2, 0)
     basic.pause(500)
     led.plotBarGraph(
-    reading - min,
-    1023 - min
+    reading - ajuste,
+    1023 - ajuste
     )
     if (input.buttonIsPressed(Button.A)) {
         basic.showNumber(reading)
     }
-    basic.pause(2000)
 })
